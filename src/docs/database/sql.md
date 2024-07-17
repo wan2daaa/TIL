@@ -1,0 +1,6 @@
+# SQL
+
+### SQL 순서
+
+FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT
+
