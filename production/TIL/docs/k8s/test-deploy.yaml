@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deploy # deployment 이름
+spec:
+  selector: # 셀렉터 설정
+    matchLabels:  # 셀렉터가 선택할 관리 대상 레이블
+      app: test-deploy
+  replicas: 5 # 레플리카 설정 팟 개수 - 변경하고 apply 해보기
+  template:   # 팟 정보
+    metadata:
+      name: test-deploy
+      labels:  # 셀렉터가 선택한 관리 대상 레이블 이름
+        app: test-deploy
+    spec:     # 팟의 스펙 , 정보
+      containers:
+        - name: test-deploy
+          image: wan2da/havday-server-member-service:0.0.1-SNAPSHOT
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      restartPolicy: Always
+      
